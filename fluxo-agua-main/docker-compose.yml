@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:17.2-alpine
+    container_name: fluxo-agua-db
+    environment:
+      POSTGRES_DB: fluxo_agua_db
+      POSTGRES_USER: fluxo_user
+      POSTGRES_PASSWORD: fluxo_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5111:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fluxo_user -d fluxo_agua_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: fluxo-agua-web
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://fluxo_user:fluxo_password@db:5432/fluxo_agua_db
+      # Variáveis CORS podem ser sobrescritas aqui se necessário
+      # CORS_ALLOWED_ORIGINS: http://seu-frontend.com,http://outro-frontend.com
+      # CORS_ALLOW_ALL_ORIGINS: "False"
+    ports:
+      - "${HOST_PORT:-8000}:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn setup.wsgi:application --bind 0.0.0.0:8000"
+
+volumes:
+  postgres_data:
