@@ -11,7 +11,7 @@ Esta API permite o monitoramento, controle e gestão do consumo de água em resi
 - Controle automático ou manual do fluxo de água (ligar/desligar)
 - Notificações por e-mail quando o consumo ultrapassar a meta
 
-  <img width="1900" height="1060" alt="Captura de tela 2025-10-04 181926" src="https://github.com/user-attachments/assets/529c6434-feb0-40bf-a208-94f442f31e38" />
+<img width="1900" height="1060" alt="Captura de tela 2025-10-04 181926" src="https://github.com/user-attachments/assets/529c6434-feb0-40bf-a208-94f442f31e38" />
 
 
 ## Principais Endpoints
@@ -80,7 +80,7 @@ DEFAULT_FROM_EMAIL=Sistema de Controle de Água <seu-email@gmail.com>
 
 > **Atenção:** Use uma senha de app do Gmail para maior segurança.
 
-  <img width="1900" height="1060" alt="Captura de tela 2025-10-04 183606" src="https://github.com/user-attachments/assets/904f9ecb-9b12-403e-9d6d-636e80b8fe49" />
+<img width="1900" height="1060" alt="Captura de tela 2025-10-04 183606" src="https://github.com/user-attachments/assets/904f9ecb-9b12-403e-9d6d-636e80b8fe49" />
 
 
 ## Banco de Dados
